@@ -1,0 +1,32 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+apply from: '../testformatter.gradle'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 28
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // LiveData
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+
+    // Unit testing
+    testImplementation 'junit:junit:4.12'
+    // Handler support in unit tests
+    testImplementation 'org.robolectric:robolectric:4.2'
+    // InstantTaskExecutor
+    testImplementation 'androidx.arch.core:core-testing:2.0.1'
+}
